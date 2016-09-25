@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>SocialNet</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div class="main_resize">
+    <div class="content">
+      <div class="content_bg">
+        <div class="mainbar"></div>
+        
+		<div class="menu_nav">
+        <ul>
+          <li class="active"><a href="home.html">Home</a></li>
+          <li><a href="aboutsus.html">About Us</a></li>          
+          <li><a href="contactus.html">Contact Us</a></li>
+		  <li><a href="form_validation.html">SignUp</a></li>
+		  <li><a href="login.html">Login</a></li>
+        </ul>
+        <div class="clr"></div>
+      </div>
+	<div class="sidebar">
+          <div class="gadget">
+            <h2 class="star"><span>Sidebar</span> Menu</h2>
+            <div class="clr"></div>
+            <ul class="sb_menu">
+              <li class="active"><a href="home.html">Home</a></li>
+              <li><a href="departments.html">Departments</a></li>
+              <li><a href="Post_News.html">Post_News</a></li>
+			  <li><a href="fests.html">Fests</a></li>
+              <li><a href="">FAQ</a></li>
+			  <li><a href="">Campus Placements</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="main">
+  <div class="main_resize">
+    <div class="content">
+      <div class="content_bg">
+        <div class="mainbar">
+	 <div class="article"><br>	
+<center><h2>Post Your News</h2><br></center>
+<form name='Post_News' action='Post.php' method='post' onSubmit='return validate();'>
+<table align='center'>
+<tr><th align='right' valign='middle'><b>View:</b></th><td><input type="checkbox" name="public" value="All"><b>Public</b></td></tr>
+<tr></tr>
+<tr><th align='right' valign='middle'><b>Department:</b></th><td>
+<select name='dept' id='dept'>
+ <option value=''>SELECT DEPARTMENT</option>
+ <option value='All'>All Departments</option>
+ <option value='CSE'>Computer Science & Engineering</option>
+ <option value='IT'>Information Technology</option>
+ <option value='ECE'>Electronics & Communication Engineering</option>
+ <option value='CIVIL'>Civil Engineering</option>
+ <option value='MECH'>Mechanical Engineering</option>
+ <option value='EEE'>Electrical & Electronic Engineering</option>
+</select>
+</td></tr>
+<tr><th align='right' valign='middle'><b>Year:</b></th><td><input type="checkbox" name="Year" value="All"><b>All Years</b></td></tr>
+<tr><td></td><td><input type="checkbox" name="Year" value="All"><b>1'st Year</b></td></tr>
+<tr><td></td><td><input type="checkbox" name="Year" value="All"><b>2'nd Year</b></td></tr>
+<tr><td></td><td><input type="checkbox" name="Year" value="All" checked><b>3'rd Year</b></td></tr>
+<tr><td></td><td><input type="checkbox" name="Year" value="All"><b>4'th Year</b></td></tr>
+
+<tr><th align='right' valign='middle'><b>Section:</b></th><td><input type="checkbox" name="section" value="All"><b>All sections</b></td></tr>
+<tr><td></td><td><input type="checkbox" name="Year" value="All"><b>Section A</b></td></tr>
+<tr><td></td><td><input type="checkbox" name="Year" value="All"><b>Section B</b></td></tr>
+<tr><td></td><td><input type="checkbox" name="Year" value="All"><b>Section C</b></td></tr>
+<tr><td></td><td><input type="checkbox" name="Year" value="All"><b>Section D</b></td></tr>
+
+<tr><th align='right' valign='middle'><b>News:</b></th><td><textarea cols="40" rows="5" name="News" id="news"></textarea></td></tr>
+<tr><td></td><td align='left'><br><input type='submit' value='POST' style="background-color:green; color:#ffffff; padding:5px; font-weight: bold;"></td></tr>
+</table>
+</form>
+<>
+     </div>
+      </div>
+        <div class="clr"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- JAVASCRIPT VALIDATION CODE -->
+<script type="text/javascript">
+ 		
+function validate()
+ {
+   //Get Form Field Values to Variables
+   var roll_no = document.getElementById('roll_no').value;	   
+   var name = document.getElementById('name').value;	   
+   var dept = document.getElementById('dept').value;	   
+   var email = document.getElementById('email').value;	   
+   var mobile = document.getElementById('mobile').value;	   
+
+   //Validate Roll Number - Empty Check & 12 Digit Value Check
+   if(roll_no == "") { alert("Roll Number should not be Empty!"); return false;}
+   var rn = /^[0-9]{12}$/; //Regular Expression to match a value with exactly 12 digits 
+   if(!rn.test(roll_no)) { alert("Invalid Roll Number! Enter a valid 12 Digit Roll Number"); return false;}
+
+   //Validate Name - Empty Check & Only Characters Check
+   if(name == "") { alert("Name should not be Empty!"); return false;}
+   var nm = /^[A-Za-z ]{4,30}$/; //Regular Expression to match a value with exactly 12 digits 
+   if(!nm.test(name)) { alert("Invalid Name! Name should contain only characters & spaces.\nIt should contain a minimum of 4 characters & maximum of 30 characters"); return false;}
+   
+   //Validate Password
+   if(password == ""){alert("Password should not be empty"); return false;}
+   if(conpassword!=password){alert("Pasword Confirmation invalid : Password did not match"); return false;}   
+   
+   
+   //Validate Department - Make sure a department is selected
+   if(dept == "") { alert("Please select a department!"); return false;}
+
+   //Validate Email - Empty Check & Email Format Check
+   if(email == "") { alert("Email should not be Empty!"); return false;}
+   var atpos = email.indexOf("@"); //get the position of @ in the input email string
+   var dotpos = email.lastIndexOf("."); //get the position (last occurrence) of .
+   //Checks Min 2 chars in email name (ravi/abc12), domain name (gmail/yahoo) and domain type (.com/.net)
+   if (atpos < 2 || dotpos <= atpos+2 || dotpos+2 >= email.length)   
+      {
+        alert("In-valid E-mail Address!");
+        return false;
+      }
+	   
+   //Validate Mobile - Empty Check & Mobile Format Check
+   if(mobile == "") { alert("Mobile should not be Empty!"); return false;}
+   var mb = /^[0-9]{10}$/; //Regular Expression to match a value with exactly 10 digits 
+   if(!mb.test(mobile)) { alert("Invalid Mobile Number! Enter a valid 10 Digit Mobile Number"); return false;}
+	   
+   if(document.getElementById("terms").checked == false) { alert("Please select the terms & conditions checkbox"); return false;}
+   return true;
+}
+</script>
+</body>
+</HTML>
